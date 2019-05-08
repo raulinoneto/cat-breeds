@@ -14,9 +14,9 @@ Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and sho
 
 ## Goals
 
-- [ ] Plan an architecture.
+- [x] Plan an architecture.
 - [ ] Plan the database structure.
-- [ ] Select composer Packages and Libraries necessary for the project.
+- [x] Select composer Packages and Libraries necessary for the project.
 - [ ] Build a bootstrap application.
 - [ ] Build tests with all cases possibles.
 - [ ] Build Mock Objects for the tests.
