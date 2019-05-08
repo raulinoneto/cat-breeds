@@ -17,9 +17,9 @@ Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and sho
 - [x] Plan an architecture.
 - [x] Plan the database structure.
 - [x] Select composer Packages and Libraries necessary for the project.
-- [ ] Build a bootstrap application.
-- [ ] Build tests with all cases possibles.
-- [ ] Build Mock Objects for the tests.
+- [x] Build a bootstrap application.
+- [x] Build tests with all cases possibles.
+- [x] Build Mock Objects for the tests.
 - [ ] Build necessary helpers and components.
 - [ ] Code the Model(s) and Migration(s).
 - [ ] Code necessary logical business.
