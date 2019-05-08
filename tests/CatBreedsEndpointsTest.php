@@ -2,7 +2,7 @@
 use PHPUnit\Framework\TestCase;
 use App\Controllers\BreedsController;
 
-class CatBreedsSearchTest extends TestCase {
+class CatBreedsEndpointsTest extends TestCase {
 
 	/**
 	* @dataProvider catBreedDataObjectProvider
@@ -47,7 +47,7 @@ class CatBreedsSearchTest extends TestCase {
 
 	public function catBreedDataObjectProvider(){
 		return [
-			"foo"=>"bar",
+			["foo", "bar"],
 		];
 	}
 }

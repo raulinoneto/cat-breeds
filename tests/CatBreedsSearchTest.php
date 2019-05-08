@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use App\Services\TheCatAPIService;
+use App\Services\TheCatAPIConnectorService;
 use App\Models\QueryCache;
 use App\Models\CatBreeds;
 
@@ -10,8 +10,10 @@ class CatBreedsSearchTest extends TestCase {
 	* @dataProvider catBreedDataObjectProvider
 	*/
 	public function testTheCatAPISearch($entry, $expected){
-		$catAPISearch = new TheCatAPIService();
-		$this->assertEquals($catAPISearch->search($entry), $expected);
+		//Create stub gor the TheCatAPIConnectorService class
+		$catAPISearchStub = $this->createMock(TheCatAPIConnectorService::class);
+		$catAPISearchStub->method("search")->willReturn("bar");
+		$this->assertEquals($catAPISearchStub->search($entry), $expected);
 	}
 
 	/**
@@ -33,7 +35,7 @@ class CatBreedsSearchTest extends TestCase {
 
 	public function catBreedDataObjectProvider(){
 		return [
-			"foo"=>"bar",
+			["foo", "bar"],
 		];
 	}
 }
