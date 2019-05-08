@@ -18,5 +18,9 @@
 	"vlucas/phpdotenv": "2.4",
         "curl/curl": "2.2",
         "robmorgan/phinx": "0.10.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "phpunit/php-invoker": "^2.0"
     }
 }

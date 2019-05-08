@@ -33,7 +33,7 @@ Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and sho
 ## Archtecture
 
 This is a basic flow that the system follows to response, all negative output are logged, but isn't in flow because was so much verbous.
-![](architecture/flowchart.png?raw=true)
+![](architecture/simplequeryflowchart.png?raw=true)
 
 ## About the code
 
