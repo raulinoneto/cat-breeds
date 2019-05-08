@@ -15,7 +15,7 @@ Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and sho
 ## Goals
 
 - [x] Plan an architecture.
-- [ ] Plan the database structure.
+- [x] Plan the database structure.
 - [x] Select composer Packages and Libraries necessary for the project.
 - [ ] Build a bootstrap application.
 - [ ] Build tests with all cases possibles.
@@ -29,6 +29,10 @@ Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and sho
 - [ ] Test all endpoints.
 - [ ] Fix the tests errors and test again.
 
+
+## Archtecture
+
+![](archtecture/flowchart.png?raw=true)
 
 ## About the code
 
