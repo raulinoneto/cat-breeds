@@ -2,6 +2,15 @@
 
 namespace App\Models;
 
-class QueryCache{
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * @property integer                                  id
+ * @property string                                   query
+ * @property json				      result
+ * @property \Carbon\Carbon                           created_at
+ * @property \Carbon\Carbon                           update_at
+ */
+class QueryCache extends Model{
 
 }
