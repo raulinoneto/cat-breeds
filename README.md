@@ -46,11 +46,13 @@ Above follow the package list used in composer and why I used it them:
 ```
 .
 ├── app
-│   ├── folder
-│   └── folder
-│ 		├── archive
+│   ├── controllers
+│   ├── models
+│   ├── migrations
+│   └── services
+│ 	├── archive
 │       └── archive
-├── app.example.yaml ## Base archieve to deploy at Google App Engine
+├── phinx.example.yaml ## Example of database configuration for migations remove ".example" and modify it
 ├── composer.json ## Composer Packages (using psr-4 to help namespaces usage)
 ├── composer.lock
 ├── config
