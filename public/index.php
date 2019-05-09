@@ -10,8 +10,11 @@ session_start();
 $config = require __DIR__ . '/../config/config.php';
 $app = new \Slim\App($config);
 
+// load app dependencies
+require __DIR__ . '/../config/dependencies.php';
+
 // load app routes
-require __DIR__ . '/../config/routes.php'
+require __DIR__ . '/../config/routes.php';
 
 //run app
 $app->run();

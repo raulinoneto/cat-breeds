@@ -30,7 +30,11 @@ return [
 	// TheCatAPI settings
 	'thecatapi'=> [
 	    'apiKey'	=> getenv('THE_CAT_API_KEY'),
-	    'apiUrl'	=> getenc('THE_CAT_API_URL')
+	    'apiUrl'	=> getenc('THE_CAT_API_URL'),
+	    //register api classes to use their endpoints
+	    'apiServices' => [
+		'breeds' => App\Services\TheCatAPIServices\BreedsService::class
+	    ]
 	]
         'cors' => null !== getenv('CORS_ALLOWED_ORIGINS') ? getenv('CORS_ALLOWED_ORIGINS') : '*'
     ],
