@@ -6,7 +6,7 @@ use Interop\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Illuminate\Support\Facades\DB;
-use App\Services\LogicalBusinessServices\CatBreedsServices;
+use App\Services\LogicalBusinessServices\CatBreedsService;
 
 class BreedsController extends BaseController {
 
@@ -21,7 +21,7 @@ class BreedsController extends BaseController {
 	*/
 	public function search(Request $request, Response $response, array $args): Response 
 	{
-		$catBreed = new CatBreedsServices($this->container);
+		$catBreed = new CatBreedsService($this->container);
 		if($name = $request->getQueryParam('name')){
 			$data = $catBreed->searchBreedsByName($name);
 		} else if($request->getQueryParam('experimental')){
@@ -48,7 +48,7 @@ class BreedsController extends BaseController {
 	*/
 	public function show(Request $request, Response $response, array $args): Response
 	{	
-        	$requestBreedId = $args['id'];
-        	return $response->withJson(['breed' => 'example	']);
+        	$breed = CatBreeds::findOrFail($args['ID']);
+        	return $response->withJson(['data' => $breed]);
 	}
 }

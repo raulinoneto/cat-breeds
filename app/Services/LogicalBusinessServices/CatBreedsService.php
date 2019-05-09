@@ -9,33 +9,57 @@ use App\Models\CatBreeds;
 use App\Helpers\ConnectionHelper;
 use App\Services\TheCatAPIServices\BreedsService;
 
-class CatBreedsServices {
+class CatBreedsService {
 	
 	private $container;
 	private $hasDBConnection;
-	public $apiError;
-
+	public $hasError;
+	
+	/**
+	* @param ContainerInterface	container
+	*/
 	public function __construct(ContainerInterface $container)
 	{
 		$this->container = $container;
-		$this->apiError = false;
+		$this->hasError = false;
 		$this->hasDBConnection = ConnectionHelper::hasDatabaseConnection($container);
 	}
 
-	private function searchBreedsApi(string $query) : array {
+	/**
+	* Search in the cat api breeds with name like provided query
+	*
+	* @param string	query
+	* @return array
+	*/
+	private function searchBreedsApi(string $query) : array 
+	{
 		$breedsByApi = new BreedsService(
 				$this->container->thecatapi->apiKey,
 				$this->container->thecatapi->apiUrl
 		);
 
-		$this->apiError = $breedsByApi->error;
+		$this->hasError = $breedsByApi->error;
 		$apiData = $breedsByApi->searchCatBreeds($query);
 		
 		return $apiData;
 	}
+
+	/**
+	* Build error when has no database connection
+	*
+	* @return array
+	*/
+	private function buildDBErrorMessage() : array 
+	{
+		$this->hasError = true;
+		return [
+			"errorCode" => 503,
+			"message" => "Could'nt connect with database"
+		];
+	}
 	
 	/**
-	* Search cat breeds 
+	* Search cat breeds by name provided in query
 	*
 	* @param string 	query
 	* @return array
@@ -55,8 +79,9 @@ class CatBreedsServices {
 			
 			// search at the cat api for results
 			$apiData = $this->searchBreedsApi($query);
-			if(!$this->apiError){
+			if(!$this->hasError){
 				// send to database for cache results
+				CatBreedsFactoryService::saveBreeds($apiData['data']);
 				// return the cat api results
 				return $apiData;
 			}
@@ -74,14 +99,37 @@ class CatBreedsServices {
 		
 	}
 
+	/**
+	* Search cat breeds by experimental key provided in query
+	*
+	* @param string 	query
+	* @return array
+	*/
 	public function searchBreedsByExperimental(int $query) : array
 	{
-		
+		// check if database is connected
 		if(!$this->hasDBConnection){
-			return [];
+			return $this->buildDBErrorMessage();
 		}
-		$breeds = CatBreeds::where('experimental', $query)->all();
+		// return cat breeds like a query
+		return CatBreeds::where('experimental', $query)->all();	
 		
+	}
+
+	/**
+	* Search cat breed by ID key provided in query
+	*
+	* @param string 	query
+	* @return array
+	*/
+	public function searchBreedsByID(int $id) : array
+	{
+		// check if database is connected
+		if(!$this->hasDBConnection){
+			return $this->buildDBErrorMessage();
+		}
+		// return cat breeds like a query
+		return CatBreeds::findOrFail($id);	
 		
 	}
 }
