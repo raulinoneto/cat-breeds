@@ -10,7 +10,7 @@ class BaseController {
 	* Container configurations
 	* @var Interop\Container\ContainerInterface
 	*/
-	private $container;
+	protected $container;
 
 	public function __construct(ContainerInterface $container) {
 		$this->container = $container;

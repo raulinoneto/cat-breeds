@@ -25,6 +25,6 @@
     },
     "scripts": {
     	"test": "vendor/bin/phpunit",
-    	"start": "php -S localhost:8080 -t public public\\index.php"
+    	"start": "php -S localhost:8080 -t public"
     }
 }

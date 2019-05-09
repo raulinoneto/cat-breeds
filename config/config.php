@@ -1,4 +1,14 @@
 <?php
+
+// Define root path
+defined('ROOT') ?: define('ROOT', dirname(__DIR__));
+
+// Load .env file
+if (file_exists(ROOT . '/.env')) {
+    $dotenv = new Dotenv\Dotenv(ROOT);
+    $dotenv->load();
+}
+
 return [
     'settings' => [
         'displayErrorDetails' => getenv('APP_DEBUG') === 'true' ? true : false, // set to false in production
@@ -30,8 +40,8 @@ return [
 	// TheCatAPI settings
 	'thecatapi'=> [
 	    'apiKey'	=> getenv('THE_CAT_API_KEY'),
-	    'apiUrl'	=> getenc('THE_CAT_API_URL')
-	]
+	    'apiUrl'	=> getenv('THE_CAT_API_URL')
+	],
         'cors' => null !== getenv('CORS_ALLOWED_ORIGINS') ? getenv('CORS_ALLOWED_ORIGINS') : '*'
     ],
 ];

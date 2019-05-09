@@ -19,7 +19,7 @@ class EloquentServiceProvider implements ServiceProviderInterface
     public function register(Container $container)
     {
         $capsule = new Manager();
-        $capsule->addConnection($container['settings']['database'];);
+        $capsule->addConnection($container['settings']['database']);
 	// Make this Capsule instance available globally via static methods.
         $capsule->setAsGlobal();
 	// Setup the Eloquent ORM.
