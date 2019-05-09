@@ -14,7 +14,6 @@ class CatBreedsMigration extends AbstractMigration
     	$table->addColumn("cat_breeds_id", "integer")
     		->addColumn("api_id", "string", ["unique" => true])
     		->addColumn("name", "sting")
-    		->addColumn("experimental", "integer", ["limit"=>MysqlAdapter::INT_TINY]])
     		->addColumn("temperament", "string")
     		->addColumn("life_span", "string")
     		->addColumn("alt_names", "string")
