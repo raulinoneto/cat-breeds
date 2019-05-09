@@ -7,13 +7,13 @@ return [
         'app' => [
             'name' => getenv('APP_NAME'),
             'url'  => getenv('APP_URL'),
-            'env'  => getenv('APP_ENV'),
+            'env'  => getenv('APP_ENV')
         ],
         // Monolog settings
         'logger' => [
             'name'  => getenv('APP_NAME'),
             'path'  => __DIR__ . '/../logs/app.log',
-            'level' => \Monolog\Logger::DEBUG,
+            'level' => \Monolog\Logger::DEBUG
         ],
         // Database settings
         'database' => [
@@ -25,16 +25,12 @@ return [
             'port'      => getenv('DB_PORT'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
+            'prefix'    => ''
         ],
 	// TheCatAPI settings
 	'thecatapi'=> [
 	    'apiKey'	=> getenv('THE_CAT_API_KEY'),
-	    'apiUrl'	=> getenc('THE_CAT_API_URL'),
-	    //register api classes to use their endpoints
-	    'apiServices' => [
-		'breeds' => App\Services\TheCatAPIServices\BreedsService::class
-	    ]
+	    'apiUrl'	=> getenc('THE_CAT_API_URL')
 	]
         'cors' => null !== getenv('CORS_ALLOWED_ORIGINS') ? getenv('CORS_ALLOWED_ORIGINS') : '*'
     ],
