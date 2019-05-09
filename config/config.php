@@ -27,6 +27,11 @@ return [
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
         ],
+	// TheCatAPI settings
+	'thecatapi'=> [
+	    'apiKey'	=> getenv('THE_CAT_API_KEY'),
+	    'apiUrl'	=> getenc('THE_CAT_API_URL')
+	]
         'cors' => null !== getenv('CORS_ALLOWED_ORIGINS') ? getenv('CORS_ALLOWED_ORIGINS') : '*'
     ],
 ];
