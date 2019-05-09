@@ -6,7 +6,7 @@ use Interop\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Illuminate\Support\Facades\DB;
-use App\Models\QueryCache;
+use App\Services\LogicalBusinessServices\CatBreedsServices;
 
 class BreedsController extends BaseController {
 
@@ -21,9 +21,20 @@ class BreedsController extends BaseController {
 	*/
 	public function search(Request $request, Response $response, array $args): Response 
 	{
-		var_dump(@$this->container->db::connection()->getPdo());
-		die();
-		return $response->withJson(['foo' => 'bar']);
+		$catBreed = new CatBreedsServices($this->container);
+		if($name = $request->getQueryParam('name')){
+			$data = $catBreed->searchBreedsByName($name);
+		} else if($request->getQueryParam('experimental')){
+			$data = $catBreed->searchBreedsByExperimental($args['experimental']);
+		} else {
+			$newResponse = $response->withStatus(400);
+			return $newResponse->withJson([
+				'code' => 400,
+				'message' => "Require name or experimental query parameter"
+			]);
+		}
+		
+		return $response->withJson(['data' => $data]);
 	}
 
 	/**

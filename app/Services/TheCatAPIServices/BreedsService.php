@@ -8,7 +8,8 @@ use Curl\Curl;
 * Class to requests in The Cat API Breeds
 * Documentation at https://docs.thecatapi.com/api-reference/breeds
 */
-class BreedsService extends TheCatAPIService {
+class BreedsService extends TheCatAPIService 
+{
 
 	// public methods
 
@@ -17,7 +18,8 @@ class BreedsService extends TheCatAPIService {
 	* @url			https://docs.thecatapi.com/api-reference/breeds/breeds-search
 	* @param string		query
 	*/
-	public function searchCatBreeds(string $query): array{
+	public function searchCatBreeds(string $query): array
+	{
 		// search endpoint
 		$endpoint = "/breeds/search";
 		// initialize response as an array
@@ -32,19 +34,17 @@ class BreedsService extends TheCatAPIService {
 		$this->curl->get($this->apiUrl.$endpoint, [
 			"q" => $query
 		]);
+
 		$this->error = $curl->error;
 		// check if the request has any error to return a message or the restult to the client
 		if ($this->error) {
-		    return [
+		    $response = [
 		    	"errorCode" => $this->curl->error_code,
 		    	"message" => $this->curl->error_message
 		    ];
-		} else {
-		    return [
-		    	// decode the json response if the request has success
-		    	"result" => json_decode($this->curl->response)
-		    ];
 		}
+		// decode the json response if the request has success
+		$response["data"] = json_decode($this->curl->response);
 
 		// close curl channel
 		$this->curl->close();

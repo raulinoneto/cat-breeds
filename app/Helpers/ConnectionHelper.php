@@ -1,17 +1,21 @@
 <?php
-namespace App\Helpers
+namespace App\Helpers;
 
 use Interop\Container\ContainerInterface;
 
 class ConnectionHelper 
 {
-
-	public static function databaseConnection(ContainerInterface $container) : bool
+	/**
+	* This function veriry the database connection to prevent errors in some places
+	* @param Interop\Container\ContainerInterface	container
+	* @return bool
+	*/
+	public static function hasDatabaseConnection(ContainerInterface $container) : bool
 	{
 		try {
-			$pdo = container->db::connection()->getPdo();
+			$pdo = $container->db::connection()->getPdo();
 			return true;
-		} catch ($e) {
+		} catch (\Exception $e) {
 			return false;
 		}
 	}
