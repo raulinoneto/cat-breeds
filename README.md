@@ -3,7 +3,7 @@
 
 When I received this test, I was very happy to have the chance to work at a large company like HostGator. As soon as possible, I began to study the requirements and improve my knowledge to apply quickly. My first step was to write good documentation, then plan the goals and finally plan an architecture that approach the challenge requirements to my knowledge to optimize the results.
 
-When I was planning the test application I think that may use complete frameworks, but in my concept the test is for the avaliators check my knowledge and abillities
+When I was planning the test application I think that may use complete frameworks like Laravel, Yii2, CakePHP wich them other, but in my concept the test is for the avaliators check my knowledge and abillities
 so I decided to use minimal packages to use and apply a many things that I learn in my career.
 
 This challenge API can be tested at [here]() (the API docs follow in this document above).
@@ -31,7 +31,7 @@ $ git clone git@github.com:raulinoneto/cat-breeds.git cat-breeds
 
 If you wants you can download the zip file with the code [here](https://github.com/raulinoneto/cat-breeds/archive/develop.zip).
 
-For run locally the application you must have ``composer`` installed (can you see [here](https://getcomposer.org/))
+For run locally the application you must have ``composer`` installed (can you see [here](https://getcomposer.org/)).
 
 Them install the dependencies with composer and load classes like psr-4:
 
@@ -78,7 +78,7 @@ $ composer test
 - [x] Code the necessary entry endpoint(s).
 - [x] Test all endpoints.
 - [x] Fix the tests errors and test again.
-- [ ] Optimize the code with best pratices.
+- [x] Optimize the code with best pratices.
 
 
 ## Archtecture
@@ -138,42 +138,39 @@ Above has a source tree of the project and a little explaination about some arch
 └── vendor
 ```
 
-## About the code
-
-Writing
-
 ### Packages
  
 
 Above follow the package list used in composer and why I used it them:
 
-* [slim/slim]() - Slim is a microframework minimal, basic and optimized for HTTP requests, I choice because is lightweight, has a good documentation and it's easy to implement.
-* [monolog/monolog]() - Use for Slim Logs, indicated by documentation.
-* [illuminate/database]() - Illuminate is an Active Record ORM used in [Laravel]() framework, isn't verbose and is so easy to use, only extending model you have an object like a database table.
-* [vlucas/phpdotenv]() - Use for load the envoirements variables configured at ``.env`` archieve.
-* [curl/curl]() - Use for abstract ``curl`` php library, it's easy to use and the code aren't verbose.
-* [robmorgan/phinx]() - Phinx is a migration package used in [CakePHP]() framework, in my concept there must be a migration tool in every project.
+* [slim/slim](http://www.slimframework.com/) - Slim is a microframework minimal, basic and optimized for HTTP requests, I choice because is lightweight, has a good documentation and it's easy to implement.
+* [monolog/monolog](https://github.com/Seldaek/monolog) - Use for Slim Logs, indicated by documentation.
+* [illuminate/database](https://github.com/illuminate/database) - Illuminate is an Active Record ORM used in [Laravel](https://laravel.com/) framework, isn't verbose and is so easy to use, only extending model you have an object like a database table.
+* [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) - Use for load the envoirements variables configured at ``.env`` archieve.
+* [curl/curl](https://github.com/php-mod/curl) - Use for abstract ``curl`` php library, it's easy to use and the code aren't verbose.
+* [robmorgan/phinx](https://phinx.org/) - Phinx is a migration package used in [CakePHP](https://cakephp.org/) framework, in my concept there must be a migration tool in every project.
 
 and development dependencies:
 
-* [phpunit/phpunit]() - Standard unit test PHP tool.
+* [phpunit/phpunit](https://phpunit.de/) - Standard unit test PHP tool.
 
 ### Security
 
+* SQL Injection - Laravel’s Eloquent ORM uses PDO binding that protects from SQL injections. This feature ensures that no client could modify the intent of the SQL queries.
 
 ## The API Documentation
 
 ### Endpoints Docs
 
-To see the endpoints usage docs click [here](docs/EndpointsIndex.md)
+To see the endpoints usage docs click [here](docs/EndpointsIndex.md).
 
 ### Source Code API Docs
 
-To see the source code docs click [here](docs/api/ApiIndex.md)
+To see the source code docs click [here](docs/api/ApiIndex.md).
 
 ## Conclusion
 
-Special thanks and others
+This test was great to my learning, the time given to finish it them was so comfortable and I enjoy it the maximum for apply my skills. I'm grateful for HostGator for this opportunity to show what I can do.
 
 ## License
 

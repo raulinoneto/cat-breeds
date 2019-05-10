@@ -26,7 +26,6 @@
     },
     "scripts": {
     	"test": "vendor/bin/phpunit",
-    	"load": "composer dump-autoload --optimize",
 	"migrate": "vendor/bin/phinx migrate",
 	"serve": "php -S localhost:8080 -t public"
     }
