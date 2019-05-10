@@ -36,7 +36,7 @@ class CatBreedsSearchTest extends TestCase {
 		$this->assertEquals($expected, $catBreedsServiceStub->searchBreedByID($entry));
 	}
 
-	public function catBreedDataObjectProvider(){
+	public function catBreedArrayDataObjectProvider(){
 		return [
 			["1", ["bar"]],
 		];

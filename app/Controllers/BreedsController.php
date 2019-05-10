@@ -22,7 +22,12 @@ class BreedsController extends BaseController {
 	public function search(Request $request, Response $response, array $args): Response 
 	{
 		$params = $request->getQueryParams();
-		$catBreed = new CatBreedsService($this->container->thecatapi, $this->container->db);
+		$catBreed = new CatBreedsService(
+				$this->container->db, 
+				$this->container->thecatapi->apiKey, 
+				$this->container->thecatapi->apiUrl
+		);
+
 		if(isset($params['name'])){
 			$data = $catBreed->searchBreedsByName($params['name']);
 		} else if(isset($params['experimental'])){
@@ -49,7 +54,20 @@ class BreedsController extends BaseController {
 	*/
 	public function show(Request $request, Response $response, array $args): Response
 	{	
-		$catBreed = new CatBreedsService($this->container->thecatapi, $this->container->db);
-        	return $response->withJson(['data' => $catBreed->searchBreedByID($args['ID'])]);
+		$catBreed = new CatBreedsService(
+				$this->container->db, 
+				$this->container->thecatapi->apiKey, 
+				$this->container->thecatapi->apiUrl
+		);
+		$result = $catBreed->searchBreedByID($args['ID']);
+
+		if(!$result){
+			$newResponse = $response->withStatus(400);
+			return $newResponse->withJson([
+				'code' => 400,
+				'message' => "No cat breed found"
+			]);
+		}
+        	return $response->withJson(['data' => $result]);
 	}
 }

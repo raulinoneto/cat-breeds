@@ -2,7 +2,7 @@
 
 namespace App\Services\LogicalBusinessServices;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Capsule\Manager;
 use App\Models\QueryCache;
 use App\Models\CatBreeds;
 use App\Helpers\ConnectionHelper;
@@ -13,14 +13,17 @@ class CatBreedsService {
 	private $theCatApi;
 	private $hasDBConnection;
 	public $hasError;
+	public $apiKey;
+	public $apiUrl;
 	
 	/**
 	* @param	theCatApi
 	* @param	db
 	*/
-	public function __construct($theCatApi, $db)
+	public function __construct(Manager $db, string $apiKey, string $apiUrl)
 	{
-		$this->theCatApi = $theCatApi;
+		$this->apiKey = $apiKey;
+		$this->apiUrl = $apiUrl;
 		$this->hasError = false;
 		$this->hasDBConnection = ConnectionHelper::hasDatabaseConnection($db);
 	}
@@ -34,8 +37,8 @@ class CatBreedsService {
 	private function searchBreedsApi(string $query) : array 
 	{
 		$breedsByApi = new BreedsService(
-				$this->theCatApi->apiKey,
-				$this->theCatApi->apiUrl
+				$this->apiKey,
+				$this->apiUrl
 		);
 
 		$this->hasError = $breedsByApi->error;
