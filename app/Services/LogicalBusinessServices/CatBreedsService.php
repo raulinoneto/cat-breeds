@@ -2,7 +2,6 @@
 
 namespace App\Services\LogicalBusinessServices;
 
-use Interop\Container\ContainerInterface;
 use Illuminate\Support\Facades\DB;
 use App\Models\QueryCache;
 use App\Models\CatBreeds;
@@ -11,18 +10,19 @@ use App\Services\TheCatAPIServices\BreedsService;
 
 class CatBreedsService {
 	
-	private $container;
+	private $theCatApi;
 	private $hasDBConnection;
 	public $hasError;
 	
 	/**
-	* @param ContainerInterface	container
+	* @param	theCatApi
+	* @param	db
 	*/
-	public function __construct(ContainerInterface $container)
+	public function __construct($theCatApi, $db)
 	{
-		$this->container = $container;
+		$this->theCatApi = $theCatApi;
 		$this->hasError = false;
-		$this->hasDBConnection = ConnectionHelper::hasDatabaseConnection($container);
+		$this->hasDBConnection = ConnectionHelper::hasDatabaseConnection($db);
 	}
 
 	/**
@@ -34,8 +34,8 @@ class CatBreedsService {
 	private function searchBreedsApi(string $query) : array 
 	{
 		$breedsByApi = new BreedsService(
-				$this->container->thecatapi->apiKey,
-				$this->container->thecatapi->apiUrl
+				$this->theCatApi->apiKey,
+				$this->theCatApi->apiUrl
 		);
 
 		$this->hasError = $breedsByApi->error;
@@ -122,7 +122,7 @@ class CatBreedsService {
 	* @param string 	query
 	* @return array
 	*/
-	public function searchBreedsByID(int $id) : array
+	public function searchBreedByID(int $id) : CatBreeds
 	{
 		// check if database is connected
 		if(!$this->hasDBConnection){

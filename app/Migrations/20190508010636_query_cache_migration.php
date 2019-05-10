@@ -12,7 +12,7 @@ class QueryCacheMigration extends AbstractMigration
 	$table = $this->table("query_cache", ["id" => false, "primary_key" => ["query_id"]]);
 	$table->addColumn("query_id", "integer")
 		->addColumn("query", "text")
-		->addColumn("result", "json")
+		->addColumn("data", "json")
 		->addTimestamps()
 		->create();
     }

@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use App\Services\TheCatAPIConnectorService;
+use App\Services\LogicalBusinessServices\CatBreedsService;
 use App\Models\QueryCache;
 use App\Models\CatBreeds;
 
@@ -9,33 +9,36 @@ class CatBreedsSearchTest extends TestCase {
 	/**
 	* @dataProvider catBreedDataObjectProvider
 	*/
-	public function testTheCatAPISearch($entry, $expected){
-		//Create stub gor the TheCatAPIConnectorService class
-		$catAPISearchStub = $this->createMock(TheCatAPIConnectorService::class);
-		$catAPISearchStub->method("search")->willReturn("bar");
-		$this->assertEquals($catAPISearchStub->search($entry), $expected);
+	public function testSearchBreedsByName($entry, $expected){
+		//Create stub gor the CatBreedsService class
+		$catBreedsServiceStub = $this->createMock(CatBreedsService::class);
+		$catBreedsServiceStub->method("searchBreedsByName")->willReturn(["bar"]);
+		$this->assertEquals($expected, $catBreedsServiceStub->searchBreedsByName($entry));
 	}
 
 	/**
 	* @dataProvider catBreedDataObjectProvider
 	*/
-	public function testLocalDatabaseByQueryCacheSearch($entry, $expected){
-		$queryCache = new QueryCache();
-		$this->assertEquals($queryCache->findOrFail(["query"=>$entry]), $expected);
+	public function testSearchBreedsByExperimental($entry, $expected){
+		//Create stub gor the CatBreedsService class
+		$catBreedsServiceStub = $this->createMock(CatBreedsService::class);
+		$catBreedsServiceStub->method("searchBreedsByExperimental")->willReturn(["bar"]);
+		$this->assertEquals($expected, $catBreedsServiceStub->searchBreedsByExperimental($entry));
 	}
 
 	/**
 	* @dataProvider catBreedDataObjectProvider
 	*/
-	public function testLocalDatabaseByCatBreedsSearch($entry, $expected){
-		$catBreeds = new CatBreeds();
-		$this->assertEquals($catBreeds->findAll(["name"=>$entry]), $expected);
+	public function testSearchBreedByID($entry, $expected){
+		//Create stub gor the CatBreedsService class
+		$catBreedsServiceStub = $this->createMock(CatBreedsService::class);
+		$catBreedsServiceStub->method("searchBreedByID")->willReturn(["bar"]);
+		$this->assertEquals($expected, $catBreedsServiceStub->searchBreedByID($entry));
 	}
-
 
 	public function catBreedDataObjectProvider(){
 		return [
-			["foo", "bar"],
+			["1", ["bar"]],
 		];
 	}
 }

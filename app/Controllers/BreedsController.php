@@ -21,7 +21,7 @@ class BreedsController extends BaseController {
 	*/
 	public function search(Request $request, Response $response, array $args): Response 
 	{
-		$catBreed = new CatBreedsService($this->container);
+		$catBreed = new CatBreedsService($this->container->thecatapi, $this->container->db);
 		if($name = $request->getQueryParam('name')){
 			$data = $catBreed->searchBreedsByName($name);
 		} else if($request->getQueryParam('experimental')){
@@ -48,7 +48,7 @@ class BreedsController extends BaseController {
 	*/
 	public function show(Request $request, Response $response, array $args): Response
 	{	
-        	$breed = CatBreeds::findOrFail($args['ID']);
-        	return $response->withJson(['data' => $breed]);
+		$catBreed = new CatBreedsService($this->container->thecatapi, $this->container->db);
+        	return $response->withJson(['data' => $catBreed->searchBreedByID($args['ID']]);
 	}
 }

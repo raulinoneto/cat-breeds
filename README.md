@@ -19,10 +19,10 @@ Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and sho
 - [x] Build Mock Objects for the tests.
 - [x] Build necessary helpers and components.
 - [x] Code the Model(s) and Migration(s).
-- [ ] Code necessary logical business.
+- [x] Code necessary logical business.
 - [ ] Test Models and logical business Classes.
 - [ ] Fix the tests errors and test again.
-- [ ] Code the necessary entry endpoint(s).
+- [x] Code the necessary entry endpoint(s).
 - [ ] Test all endpoints.
 - [ ] Fix the tests errors and test again.
 
@@ -38,20 +38,44 @@ This is a basic flow that the system follows to response, all negative output ar
 ```
 .
 ├── app
-│   ├── controllers
-│   ├── models
-│   ├── migrations
-│   └── services
-│ 	├── archive
-│       └── archive
-├── phinx.example.yaml ## Example of database configuration for migations remove ".example" and modify it
-├── composer.json ## Composer Packages (using psr-4 to help namespaces usage)
+│   ├── Controllers
+│   │   ├── BaseController.php
+│   │   └── BreedsController.php
+│   ├── Helpers
+│   │   └── ConnectionHelper.php
+│   ├── Migrations
+│   │   ├── 20190508010636_query_cache_migration.php
+│   │   └── 20190508010704_cat_breeds_migration.php
+│   ├── Models
+│   │   ├── CatBreeds.php
+│   │   └── QueryCache.php
+│   └── Services
+│       ├── DatabaseServices
+│       │   └── EloquentServiceProvider.php
+│       ├── LogicalBusinessServices
+│       │   ├── CatBreedsFactoryService.php
+│       │   └── CatBreedsService.php
+│       └── TheCatAPIServices
+│           ├── BreedsService.php
+│           └── TheCatAPIService.php
+├── architecture
+│   ├── flowchart.png
+│   └── simplequeryflowchart.png
+├── composer.json
 ├── composer.lock
 ├── config
-│   ├── app.php ## All tasks necessary to application operation
-│   └── config.php ## Configurations to application operation
+│   ├── config.php
+│   ├── dependencies.php
+│   └── routes.php
+├── logs
+├── phinx.example.yml
+├── .env.example
+├── phpunit.xml
 ├── public
-│   └── index.php ## Runs the application
+│   └── index.php
+├── README.md
+├── tests
+│   └── CatBreedsSearchTest.php
 └── vendor
 ```
 
