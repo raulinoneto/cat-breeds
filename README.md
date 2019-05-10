@@ -12,6 +12,56 @@ This challenge API can be tested at [here]() (the API docs follow in this docume
 
 Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and show to the Client a Cat Breeds list with a query by name and cache the Cat API results in a MySQL database.
 
+
+### Installation
+
+For install the project you just need clone this repository at master.
+
+Using https:
+
+```sh
+$ git clone https://github.com/raulinoneto/cat-breeds.git cat-breeds
+```
+
+or using ssh:
+
+```sh
+$ git clone git@github.com:raulinoneto/cat-breeds.git cat-breeds
+```
+
+If you wants you can download the zip file with the code [here](https://github.com/raulinoneto/cat-breeds/archive/develop.zip).
+
+For run locally the application you must have ``composer`` installed (can you see [here](https://getcomposer.org/))
+
+Them install the dependencies with composer and load classes like psr-4:
+
+```sh
+$ composer install
+$ composer dump-autoload
+```
+
+Copy ``.env.example`` to ``.env``  and configure the database credential them migrate the tables:
+
+```sh
+$ composer migrate
+```
+
+Finnaly you can run the application:
+
+```sh
+$ composer serve
+```
+
+**Greats! The app is running**
+
+### Tests
+
+Run the tests using follow command:
+
+```sh
+$ composer test
+```
+
 ## Goals
 
 - [x] Plan an architecture.
@@ -107,40 +157,19 @@ Above follow the package list used in composer and why I used it them:
 and development dependencies:
 
 * [phpunit/phpunit]() - Standard unit test PHP tool.
-* [monolog/monolog]() - .
-
-
-### Installation and deploy
-
-For run locally the application you must have ``composer`` installed (can you see [here](https://getcomposer.org/)) and follow these commands:
-
-```sh
-$ composer install
-$ composer start
-$ composer serve
-```
-
-**Greats! The app is running**
 
 ### Security
 
 
-### Tests
-
-Run the tests using follow command:
-
-```sh
-$ composer test
-```
-
 ## The API Documentation
 
 ### Endpoints Docs
-How to use the endpoints.
+
+To see the endpoints usage docs click [here](docs/EndpointsIndex.md)
 
 ### Source Code API Docs
 
-To see the Source Code Doc click [here](docs/api/ApiIndex.md)
+To see the source code docs click [here](docs/api/ApiIndex.md)
 
 ## Conclusion
 
