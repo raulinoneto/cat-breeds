@@ -73,8 +73,8 @@ $ composer test
 - [x] Build necessary helpers and components.
 - [x] Code the Model(s) and Migration(s).
 - [x] Code necessary logical business.
-- [ ] Test Models and logical business Classes.
-- [ ] Fix the tests errors and test again.
+- [x] Test Models and logical business Classes.
+- [x] Fix the tests errors and test again.
 - [x] Code the necessary entry endpoint(s).
 - [x] Test all endpoints.
 - [x] Fix the tests errors and test again.
