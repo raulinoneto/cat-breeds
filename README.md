@@ -99,10 +99,10 @@ Above follow the package list used in composer and why I used it them:
 
 * [slim/slim]() - Slim is a microframework minimal, basic and optimized for HTTP requests, I choice because is lightweight, has a good documentation and it's easy to implement.
 * [monolog/monolog]() - Use for Slim Logs, indicated by documentation.
-* [illuminate/database]() - Illuminate is a Active Record ORM used in [Laravel]() framework, isn't verbose and is so easy to use, only extending model you have an object like a database table.
+* [illuminate/database]() - Illuminate is an Active Record ORM used in [Laravel]() framework, isn't verbose and is so easy to use, only extending model you have an object like a database table.
 * [vlucas/phpdotenv]() - Use for load the envoirements variables configured at ``.env`` archieve.
 * [curl/curl]() - Use for abstract ``curl`` php library, it's easy to use and the code aren't verbose.
-* [robmorgan/phinx]() - Phinx is a migration package used in CakePHP framework, in my concept there must be a migration tool in every project.
+* [robmorgan/phinx]() - Phinx is a migration package used in [CakePHP]() framework, in my concept there must be a migration tool in every project.
 
 and development dependencies:
 
