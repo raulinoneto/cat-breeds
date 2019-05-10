@@ -17,8 +17,9 @@ class CatBreedsService {
 	public $apiUrl;
 	
 	/**
-	* @param	theCatApi
-	* @param	db
+	* @param string		apiKey
+	* @param string		apiUrl
+	* @param Manager	db
 	*/
 	public function __construct(Manager $db, string $apiKey, string $apiUrl)
 	{
