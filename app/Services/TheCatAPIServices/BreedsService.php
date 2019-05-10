@@ -35,7 +35,7 @@ class BreedsService extends TheCatAPIService
 			"q" => $query
 		]);
 
-		$this->error = $curl->error;
+		$this->error = $this->curl->error;
 		// check if the request has any error to return a message or the restult to the client
 		if ($this->error) {
 		    $response = [

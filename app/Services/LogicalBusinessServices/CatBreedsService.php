@@ -69,10 +69,11 @@ class CatBreedsService {
 		// Verify database connection to find it
 		if($this->hasDBConnection){
 			// find the cached searchs or fail
-			$cachedQuery = QueryCache::where('query', $query)->firstOrFail();
+			$cachedQuery = QueryCache::where('query', "$query")->first();
+			
 			if ($cachedQuery) {
 				// return cached search
-				return json_decode($cachedQuery->data);
+				return ['data' => json_decode( $cachedQuery->data)];
 			}
 			// discard ununsable variable
 			unset($cachedQuery);
@@ -81,7 +82,7 @@ class CatBreedsService {
 			$apiData = $this->searchBreedsApi($query);
 			if(!$this->hasError){
 				// send to database for cache results
-				CatBreedsFactoryService::saveBreeds($apiData['data']);
+				CatBreedsFactoryService::saveBreeds($query, $apiData['data']);
 				// return the cat api results
 				return $apiData;
 			}
@@ -112,7 +113,7 @@ class CatBreedsService {
 			return $this->buildDBErrorMessage();
 		}
 		// return cat breeds like a query
-		return CatBreeds::where('experimental', $query)->all();	
+		return ['data' => CatBreeds::where('experimental', $query)->get()];	
 		
 	}
 
@@ -122,14 +123,14 @@ class CatBreedsService {
 	* @param string 	query
 	* @return array
 	*/
-	public function searchBreedByID(int $id) : CatBreeds
+	public function searchBreedByID(int $id)
 	{
 		// check if database is connected
 		if(!$this->hasDBConnection){
 			return $this->buildDBErrorMessage();
 		}
 		// return cat breeds like a query
-		return CatBreeds::findOrFail($id);	
+		return CatBreeds::find($id);	
 		
 	}
 }

@@ -12,5 +12,5 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon                           update_at
  */
 class QueryCache extends Model{
-
+	public $table = "query_cache";
 }

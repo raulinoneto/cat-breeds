@@ -21,11 +21,12 @@ class BreedsController extends BaseController {
 	*/
 	public function search(Request $request, Response $response, array $args): Response 
 	{
+		$params = $request->getQueryParams();
 		$catBreed = new CatBreedsService($this->container->thecatapi, $this->container->db);
-		if($name = $request->getQueryParam('name')){
-			$data = $catBreed->searchBreedsByName($name);
-		} else if($request->getQueryParam('experimental')){
-			$data = $catBreed->searchBreedsByExperimental($args['experimental']);
+		if(isset($params['name'])){
+			$data = $catBreed->searchBreedsByName($params['name']);
+		} else if(isset($params['experimental'])){
+			$data = $catBreed->searchBreedsByExperimental($params['experimental']);
 		} else {
 			$newResponse = $response->withStatus(400);
 			return $newResponse->withJson([
@@ -34,7 +35,7 @@ class BreedsController extends BaseController {
 			]);
 		}
 		
-		return $response->withJson(['data' => $data]);
+		return $response->withJson($data);
 	}
 
 	/**

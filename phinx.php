@@ -5,7 +5,7 @@ $config = require __DIR__ . '/config/config.php';
 
 return [
 	'paths' => [
-		'migrations'=>'%%PHINX_CONFIG_DIR%%/app/migrations'
+		'migrations'=>'%%PHINX_CONFIG_DIR%%/app/Migrations'
 	],
 	'environments' => [
         	'default_database' => 'default',

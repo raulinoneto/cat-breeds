@@ -17,7 +17,7 @@ class CatBreedsFactoryService
 	public static function saveBreeds(string $query, array $breeds)
 	{
 		self::saveCache($query, $breeds);
-		self::saveBreeds($breeds);
+		self::saveBreedsInDB($breeds);
 	}
 
 	/**
@@ -29,8 +29,8 @@ class CatBreedsFactoryService
 	private static function saveCache(string $query, array $breeds)
 	{
 		// verifying if the query exists in database for update
-		$queryCache = QueryCache::where('query', $query)->firstOrFail();
-		
+		$queryCache = QueryCache::where('query', $query)->first();
+
 		// if query doesn't exists create a new querycache
 		if(!$queryCache){
 			$queryCache = new QueryCache();
@@ -48,22 +48,23 @@ class CatBreedsFactoryService
 	*
 	* @param array	breeds
 	*/
-	private static function saveBreeds(array $breeds)
+	private static function saveBreedsInDB(array $breeds)
 	{
 		// save all breed like a unique record in database
 		foreach ($breeds as $breed) {
 			//verifying if breed exists in database
-			$queryCache = CatBreeds::where('query', $query)->firstOrFail();
+			$catBreed = CatBreeds::where('api_id', $breed->id)->first();
+
 			// go to the next if breed exists
-			if($queryCache){
+			if($catBreed){
 				continue;
 			}
 
 			// instance a new breed
-			$queryCache = new CatBreeds();
+			$catBreed = new CatBreeds();
 
 			// parsing data to breed
-			$catBreed->api_id = $breed->api_id;
+			$catBreed->api_id = $breed->id;
 			$catBreed->name = $breed->name;
 			$catBreed->temperament = $breed->temperament;
 			$catBreed->life_span = $breed->life_span;
@@ -77,7 +78,7 @@ class CatBreedsFactoryService
 			$catBreed->natural = $breed->natural;
 			$catBreed->rare = $breed->rare;
 			$catBreed->rex = $breed->rex;
-			$catBreed->suppress_tail = $breed->suppress_tail;
+			$catBreed->suppress_tail = $breed->suppressed_tail;
 			$catBreed->short_legs = $breed->short_legs;
 			$catBreed->hypoallergenic = $breed->hypoallergenic;
 			$catBreed->adaptability = $breed->adaptability;
@@ -89,6 +90,7 @@ class CatBreedsFactoryService
 			$catBreed->health_issues = $breed->health_issues;
 			$catBreed->intelligence = $breed->intelligence;
 			$catBreed->shedding_level = $breed->shedding_level;
+			$catBreed->social_needs = $breed->social_needs;
 			$catBreed->stranger_friendly = $breed->stranger_friendly;
 			$catBreed->vocalisation = $breed->vocalisation;
 
