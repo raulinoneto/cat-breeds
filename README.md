@@ -88,8 +88,18 @@ Writing
 
 Above follow the package list used in composer and why I used it them:
 
-* [package/name]() - .
+* [slim/slim]() - .
+* [monolog/monolog]() - .
+* [illuminate/database]() - .
+* [vlucas/phpdotenv]() - .
+* [curl/curl]() - .
+* [robmorgan/phinx]() - .
 
+and development dependencies?
+
+* [phpunit/phpunit]() - .
+* [monolog/monolog]() - .
+* [phpunit/php-invoker]() - 
 
 
 ### Installation and deploy
@@ -98,7 +108,7 @@ For run locally the application you must have ``composer`` installed (can you se
 
 ```sh
 $ composer install
-$ composer dump-autoload --optimize
+$ composer start
 $ composer serve
 ```
 

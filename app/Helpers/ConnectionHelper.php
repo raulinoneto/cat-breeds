@@ -1,7 +1,7 @@
 <?php
 namespace App\Helpers;
 
-use Interop\Container\ContainerInterface;
+use Illuminate\Database\Capsule\Manager;
 
 class ConnectionHelper 
 {
@@ -10,10 +10,10 @@ class ConnectionHelper
 	* @param Interop\Container\ContainerInterface	container
 	* @return bool
 	*/
-	public static function hasDatabaseConnection(ContainerInterface $container) : bool
+	public static function hasDatabaseConnection(Manager $db) : bool
 	{
 		try {
-			$pdo = $container->db::connection()->getPdo();
+			$pdo = $db::connection()->getPdo();
 			return true;
 		} catch (\Exception $e) {
 			return false;

@@ -49,6 +49,6 @@ class BreedsController extends BaseController {
 	public function show(Request $request, Response $response, array $args): Response
 	{	
 		$catBreed = new CatBreedsService($this->container->thecatapi, $this->container->db);
-        	return $response->withJson(['data' => $catBreed->searchBreedByID($args['ID']]);
+        	return $response->withJson(['data' => $catBreed->searchBreedByID($args['ID'])]);
 	}
 }
