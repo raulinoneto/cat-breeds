@@ -135,7 +135,12 @@ $ composer test
 
 ## The API Documentation
 
+### Endpoints Docs
 How to use the endpoints.
+
+### Source Code API Docs
+
+To see the Source Code Doc click [here](docs/api/ApiIndex.md)
 
 ## Conclusion
 
