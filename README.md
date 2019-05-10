@@ -6,8 +6,6 @@ When I received this test, I was very happy to have the chance to work at a larg
 When I was planning the test application I think that may use complete frameworks like Laravel, Yii2, CakePHP wich them other, but in my concept the test is for the avaliators check my knowledge and abillities
 so I decided to use minimal packages to use and apply a many things that I learn in my career.
 
-This challenge API can be tested at [here]() (the API docs follow in this document above).
-
 ### The Challenge
 
 Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and show to the Client a Cat Breeds list with a query by name and cache the Cat API results in a MySQL database.
