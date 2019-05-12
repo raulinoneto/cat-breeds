@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "id": "sibe",
+      "lap": 1,
+      "rex": 0,
+      "name": "Siberian",
+      "rare": 0,
+      "indoor": 0,
+      "origin": "Russia",
+      "weight": {
+        "metric": "4 - 7",
+        "imperial": "8 - 16"
+      },
+      "cfa_url": "http://cfa.org/Breeds/BreedsSthruT/Siberian.aspx",
+      "natural": 1,
+      "grooming": 2,
+      "hairless": 0,
+      "alt_names": "Moscow Semi-longhair, HairSiberian Forest Cat",
+      "life_span": "12 - 15",
+      "short_legs": 0,
+      "description": "The Siberians dog like temperament and affection makes the ideal lap cat and will live quite happily indoors. Very agile and powerful, the Siberian cat can easily leap and reach high places, including the tops of refrigerators and even doors. ",
+      "temperament": "Curious, Intelligent, Loyal, Sweet, Agile, Playful, Affectionate",
+      "adaptability": 5,
+      "country_code": "RU",
+      "dog_friendly": 5,
+      "energy_level": 5,
+      "experimental": 0,
+      "intelligence": 5,
+      "social_needs": 4,
+      "vocalisation": 1,
+      "country_codes": "RU",
+      "health_issues": 2,
+      "vetstreet_url": "http://www.vetstreet.com/cats/siberian",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Siberian_(cat)",
+      "child_friendly": 4,
+      "hypoallergenic": 1,
+      "shedding_level": 3,
+      "affection_level": 5,
+      "suppressed_tail": 0,
+      "vcahospitals_url": "https://vcahospitals.com/know-your-pet/cat-breeds/siberian",
+      "stranger_friendly": 3
+    }
+  ]
+}
