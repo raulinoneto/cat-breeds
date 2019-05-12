@@ -1,16 +1,15 @@
 # CAT BREEDS
 ###### A HostGator code challenge
 
-When I received this test, I was very happy to have the chance to work at a large company like HostGator. As soon as possible, I began to study the requirements and improve my knowledge to apply quickly. My first step was to write good documentation, then plan the goals and finally plan an architecture that approach the challenge requirements to my knowledge to optimize the results.
+When I received this test, I was very happy to have the chance to work at a large company like HostGator. As soon as I could, I started studying the Challenge’s requirements and to improve my knowledge so I could apply quickly. The first step was writing a good documentation, the second was planning the goals and the last one was to conceive an architecture that enhance the results by matching my knowledge with the Challenge’s requirements.
 
-When I was planning the test application I think that may use complete frameworks like Laravel, Yii2, CakePHP wich them other, but in my concept the test is for the avaliators check my knowledge and abillities
-so I decided to use minimal packages to use and apply a many things that I learn in my career.
+When I was planning the test application I thought that I could use complete frameworks like Laravel, Yii2, CakePHP, among others. However, in my understanding, the test consists on an evaluative process to measure the depth of my knowledge and abilities. Therefore, I set forth the many things I have learned in my career by using minimal packages.
 
 ### The Challenge
 
 Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and show to the Client a Cat Breeds list with a query by name and cache the Cat API results in a MySQL database.
 
-### System requirements
+### System Requirements
 
 * PHP 7+
 * Composer
@@ -34,7 +33,7 @@ $ git clone git@github.com:raulinoneto/cat-breeds.git cat-breeds
 
 If you wants you can download the zip file with the code [here](https://github.com/raulinoneto/cat-breeds/archive/develop.zip).
 
-For run locally the application you must have ``composer`` installed (can you see [here](https://getcomposer.org/)).
+For run locally the application you must have ``composer`` installed (you can see [here](https://getcomposer.org/)).
 
 Them install the dependencies with composer and load classes like psr-4:
 
@@ -43,7 +42,7 @@ $ composer install
 $ composer dump-autoload
 ```
 
-Copy ``.env.example`` to ``.env``  and configure the database credential them migrate the tables:
+Copy ``.env.example`` to ``.env``  and configure the database credential then migrate the tables:
 
 ```sh
 $ composer migrate
@@ -59,7 +58,7 @@ $ composer serve
 
 ### Tests
 
-Run the tests using follow command:
+Run the tests using the command bellow:
 
 ```sh
 $ composer test
@@ -77,31 +76,29 @@ $ composer test
 - [x] Code the Model(s) and Migration(s).
 - [x] Code necessary logical business.
 - [x] Test Models and logical business Classes.
-- [x] Fix the tests errors and test again.
+- [x] Fix the tests errors and test it again.
 - [x] Code the necessary entry endpoint(s).
 - [x] Test all endpoints.
-- [x] Fix the tests errors and test again.
-- [x] Optimize the code with best pratices.
+- [x] Fix the tests errors and test it again.
+- [x] Optimize the code with the best pratices.
 
 
 ## Archtecture
 
 ### FlowChart
-The principal requirement of test is cache responses in MySQL database, in my knowledge the search cache store query and response for next searches. 
-For best results I resolved to store every object in the query at a database tuple, case the client want to do a new search that doesn't exists in cache.
-So in this flow we can se the plan to cover this objective:
+The main requirement of the test is cache responses in MySQL database. In my understanding, the search cache stores queries and responses for the next searches. For best results I decided to store every object in the query at a database tuple, in case the client want to do a new search that doesn't exists in cache. So, in the Flow Chart below, we can see the developed plan to achieve this goal:
+
 ![](architecture/simplequeryflowchart.png?raw=true)
 
 ### Source Tree
 
-The project organization is like a MVC archtecture, using layers to separate responsabilites and approaching at SOLID pratices. 
-Above has a source tree of the project and a little explaination about some archieves:
+The project scope is like a MVC architecture, using layers to separate responsibilities and approaching SOLID practices. Below, there is a source tree of the project and a little explanation about some archives:
 
 ```
 .
 ├── app
 │   ├── Controllers
-│   │   ├── BaseController.php					// Base to all controllers for use some requirements
+│   │   ├── BaseController.php					// Base for all controllers for use some requirements
 │   │   └── BreedsController.php				// Controller with breed endpoints
 │   ├── Helpers
 │   │   └── ConnectionHelper.php				// Helper to know if the database is connected with only one try
@@ -132,26 +129,26 @@ Above has a source tree of the project and a little explaination about some arch
 ├── logs
 ├── phinx.php							// Migrations configurations
 ├── .env.example						// Example of evoirements variables
-├── phpunit.xml							// Unit tests configuration
+├── phpunit.xml						// Unit tests configuration
 ├── public
 │   └── index.php						// Application Bootstrap
 ├── README.md
 ├── tests
-│   └── CatBreedsSearchTest.php					// Testing logical business
+│   └── CatBreedsSearchTest.php				// Testing logical business
 └── vendor
 ```
 
 ### Packages
  
 
-Above follow the package list used in composer and why I used it them:
+Below it is the package list used in composer and why I used them:
 
-* [slim/slim](http://www.slimframework.com/) - Slim is a microframework minimal, basic and optimized for HTTP requests, I choice because is lightweight, has a good documentation and it's easy to implement.
+* [slim/slim](http://www.slimframework.com/) - Slim is a microframework minimal, basic and optimized for HTTP requests, I chose it because is lightweight, has a good documentation and it's easy to implement.
 * [monolog/monolog](https://github.com/Seldaek/monolog) - Use for Slim Logs, indicated by documentation.
-* [illuminate/database](https://github.com/illuminate/database) - Illuminate is an Active Record ORM used in [Laravel](https://laravel.com/) framework, isn't verbose and is so easy to use, only extending model you have an object like a database table.
-* [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) - Use for load the envoirements variables configured at ``.env`` archieve.
-* [curl/curl](https://github.com/php-mod/curl) - Use for abstract ``curl`` php library, it's easy to use and the code aren't verbose.
-* [robmorgan/phinx](https://phinx.org/) - Phinx is a migration package used in [CakePHP](https://cakephp.org/) framework, in my concept there must be a migration tool in every project.
+* [illuminate/database](https://github.com/illuminate/database) - Illuminate is an Active Record ORM used in [Laravel](https://laravel.com/) framework, isn't verbose and is so easy to use, only extending model obtain an object like a database table.
+* [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) - Used to load the envoirements variables configured at ``.env`` archieve.
+* [curl/curl](https://github.com/php-mod/curl) - Use for abstract ``curl`` php library, it is easy to use and the code is not verbose.
+* [robmorgan/phinx](https://phinx.org/) - Phinx is a migration package used in [CakePHP](https://cakephp.org/) framework, in my conception, there must be a migration tool in every project.
 
 and development dependencies:
 
@@ -173,8 +170,8 @@ To see the source code docs click [here](docs/api/ApiIndex.md).
 
 ## Conclusion
 
-This test was great to my learning, the time given to finish it them was so comfortable and I enjoy it the maximum for apply my skills. I'm grateful for HostGator for this opportunity to show what I can do.
+This test was great to improve my knowledge and abilities, I was comfort with the deadline given and I enjoyed it the maximum I could to prove my skills. I'm grateful for HostGator for this opportunity to show what I can do.
 
 ## License
 
-This repository has no registered license, but feel free to clone and use it (only if you don't are doing the HostGator test, LOL!).
+This repository has no registered license, but feel free to clone and use it (only if you aren’t doing the HostGator test, LOL!).
