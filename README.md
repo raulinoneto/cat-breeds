@@ -10,6 +10,11 @@ so I decided to use minimal packages to use and apply a many things that I learn
 
 Create a WEB API that consult the [Cat API](https://docs.thecatapi.com/) and show to the Client a Cat Breeds list with a query by name and cache the Cat API results in a MySQL database.
 
+### System requirements
+
+* PHP 7+
+* Composer
+* MySQL 5.6+
 
 ### Installation
 
