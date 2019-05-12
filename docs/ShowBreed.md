@@ -56,5 +56,5 @@
 * **Error Response:**
 
   * **Code:** 503 Unavailable Service <br />
-    **Content:** `{ message : "Could'nt connect with database" }`
+    **Content:** `{ message : "Couldn't connect with database" }`
 
